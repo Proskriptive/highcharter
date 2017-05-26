@@ -819,6 +819,6 @@ hchart.qcc <- function(object,...){
       data = object$statistics, name = "stats", type = "line",
        ...)   %>%
     hc_add_series(
-      data = center, name = "mean", type = "line",
+      data = cent, name = "mean", type = "line",
       ...)   
 }
