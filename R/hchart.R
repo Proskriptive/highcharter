@@ -832,7 +832,7 @@ hchart.qcc <- function(object, ...) {
         color =  'red',
         dashStyle = 'shortdash',
         width = 2,
-        label = list(text:'UCL')
+        label = list(text ='UCL')
       )
     )) %>%
     hc_add_series(data = object$statistics,
