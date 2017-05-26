@@ -811,14 +811,36 @@ hchart.glm <- function(object, ...) {
 #' #@import qcc
 #' @export
 
-hchart.qcc <- function(object,...){
-  data <- object$data 
+
+
+hchart.qcc <- function(object, ...) {
+  data <- object$data
   cent <- object$center
-  highchart() %>% 
-    hc_add_series(
-      data = object$statistics, name = "stats", type = "line",
-       ...)   %>%
-    hc_add_series(
-      data = cent, name = "mean", type = "line",
-      ...)   
+  lcl <- obj$limits["LCL"]
+  ucl <- obj$limits["UCL"]
+  highchart() %>%
+    hc_yAxis(plotLines = list(
+      list(
+        value = lcl,
+        color = 'green',
+        dashStyle = 'shortdash',
+        width = 2,
+        label = list(text = 'LCL')
+      ),
+      list(
+        value = ucl,
+        color =  'red',
+        dashStyle = 'shortdash',
+        width = 2,
+        label = list(text:'UCL')
+      )
+    )) %>%
+    hc_add_series(data = object$statistics,
+                  name = "stats",
+                  type = "line",
+                  ...)   %>%
+    hc_add_series(data = cent,
+                  name = "mean",
+                  type = "line",
+                  ...)
 }
