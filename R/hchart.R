@@ -805,3 +805,20 @@ hchart.glm <- function(object, ...) {
   #       -}
 
 }
+
+#' qcc charts.  This is like adding in at least 5 more
+#' @param object the object that is sent in
+#' #@import qcc
+#' @export
+
+hchart.qcc <- function(object,...){
+  data <- object$data 
+  cent <- object$center
+  highchart() %>% 
+    hc_add_series(
+      data = object$statistics, name = "stats", type = "line",
+       ...)   %>%
+    hc_add_series(
+      data = center, name = "mean", type = "line",
+      ...)   
+}
