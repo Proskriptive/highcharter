@@ -816,8 +816,8 @@ hchart.glm <- function(object, ...) {
 hchart.qcc <- function(object, ...) {
   data <- object$data
   cent <- object$center
-  lcl <- obj$limits["LCL"]
-  ucl <- obj$limits["UCL"]
+  lcl <- obj$limits[,"LCL"]
+  ucl <- obj$limits[,"UCL"]
   highchart() %>%
     hc_yAxis(plotLines = list(
       list(
